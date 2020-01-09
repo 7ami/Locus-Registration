@@ -11,17 +11,94 @@
 
     <title>locus</title>
     <style>
+    .header {
+    color: #36FF0A;
+    font-size: 27px;
+    padding: 10px;
+    }
+
+   
+
     a.navbar-brand {
         font-family:'Lobster',cursive;
         color:aliceblue;
 
+    }
+    .white-text{
+
+      color: #fff;
+      cursor: pointer;
+      text-decoration: italic;
+      font-family: "Times New Roman";
+    }
+    .info-color{
+       background-color: rgb(0,124,70);
     }
     .custom-nav{
         background-color: rgb(0,114,70);
     }
     .nav>li {
    text-align:right;
-}
+    }
+    .form-row {
+    overflow: hidden;
+    padding: 10px;
+    font-size: 13px;
+    border-bottom: 1px solid #eee;
+    }
+
+    .form-row img, .form-row input {
+    vertical-align: middle;
+    }
+
+    .form-row label input[type="checkbox"] {
+    margin-top: 0;
+    vertical-align: 0;
+    }
+
+    form .form-row p {
+    padding-left: 0;
+    }
+
+     .hidden {
+    display: none;
+    }
+    label {
+    font-weight: normal;
+    color: #666;
+    font-size: 13px;
+    }
+
+    .required label, label.required {
+    font-weight: bold;
+    color: #333;
+    }
+
+   form ul.radiolist li {
+    list-style-type: none;
+    }
+
+   form ul.radiolist label {
+    float: none;
+    display: inline;
+    }
+
+    form ul.radiolist input[type="radio"] {
+    margin: -2px 4px 0 0;
+    padding: 0;
+    }
+
+    form ul.inline {
+    margin-left: 0;
+    padding: 0;
+    }
+
+    form ul.inline li {
+    float: left;
+    padding-right: 7px;
+    }
+
+
 
     </style>
   </head>
@@ -45,11 +122,69 @@
             <form action="/regis/" method="post">
                 {% csrf_token %}
                {{ form.as_p }}
-              <button type="submit" class="btn btn-success">Submit</button>
+              <button type="submit" class="btn btn-success waves-effect waves-light" >Submit</button>
             </form>
         </div>  
     </div>
-</div>    
+</div>   
+<!-- Material form contact -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <form class="form-horizontal" method="post">
+                    <fieldset>
+                        <h2 class="card-header info-color white-text text-center py-4 "><strong>Visitors E-Contact</strong> </h2>
+                       
+
+                        <div class="form-group">
+                            
+                            <div class="container col-md-5 mt-4">
+                                <input id="fname" name="name" type="text" placeholder="First Name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="container col-md-5 mt-4">
+                                <input id="lname" name="name" type="text" placeholder="Last Name" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            
+                            <div class="container col-md-5 mt-4 ">
+                                <input id="email" name="email" type="text" placeholder="Email Address" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                           
+                            <div class="container col-md-5 mt-4">
+                                <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            
+                            <div class="container col-md-5 mt-4">
+                                <input id="college" name="college" type="text" placeholder="College/Company" class="form-control">
+                            </div>
+                        </div>
+
+                       
+
+                        <div class="form-group">
+                            <div class="container col-md-5 text-center">
+                                <button type="submit" class="btn btn-success waves-effect waves-light info-color">Submit</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
 {% if check %}
 alert('Welcome to locus-2020');
