@@ -11,3 +11,15 @@ class Registration(models.Model):
 
     def __str__(self):
         return self.firstname
+
+
+class Contact(models.Model):
+    id = models.AutoField(primary_key=True)
+    fname = models.CharField(max_length=100)
+    lname = models.CharField(max_length=100)
+    phone = models.CharField(max_length=100, default="")
+    email = models.EmailField(default="")
+    college = models.CharField(max_length=100, default="")
+
+    def __str__(self):
+        return self.fname
