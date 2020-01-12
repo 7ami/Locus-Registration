@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from .forms import RegistrationForm
 from .models import Contact
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 
 # Create your views here.
 """def home(request):
@@ -20,8 +22,31 @@ from .models import Contact
 """
 
 
-def home(request):
-    look = 0
+def loginhandle(request):
+
+    if request.method == "POST":
+        uname = request.POST.get("uname")
+        pass1 = request.POST.get("pass1")
+        user = authenticate(username=uname, password=pass1)
+        if user is not None:
+            login(request, user)
+            # print(uname, pass1)
+            return redirect("member")
+        else:
+            messages.error(request, "Invalid,please try again")
+            # print(uname, pass1)
+
+    return render(request, "registration/login.html")
+
+
+def member(request):
+    if request.method == "POST":
+        pass
+    return render(request, "registration/members.html")
+
+
+"""
+ look = 0
     if request.method == "POST":
         look = 1
         fname = request.POST.get("fname", "")
@@ -33,4 +58,6 @@ def home(request):
             fname=fname, lname=lname, email=email, phone=phone, college=college
         )
         con.save()
-    return render(request, "registration/home.html", {"look": look})
+    return render(request, "registration/login.html", {"look": look})  
+"""
+
