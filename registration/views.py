@@ -40,9 +40,24 @@ def loginhandle(request):
 
 
 def member(request):
+    look = 0
     if request.method == "POST":
-        pass
-    return render(request, "registration/members.html")
+        look = 1
+        fname = request.POST.get("fname", "")
+        lname = request.POST.get("lname", "")
+        email = request.POST.get("email", "")
+        phone = request.POST.get("phone", "")
+        college = request.POST.get("college", "")
+        con = Contact(
+            fname=fname, lname=lname, email=email, phone=phone, college=college
+        )
+        con.save()
+    return render(request, "registration/members.html", {"look": look})
+
+
+def logquit(request):
+    logout(request)
+    return redirect("loginhandles")
 
 
 """
